@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PVP-CHEATS - Скачать читы для Minecraft</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            scroll-behavior: smooth; /* Глобальная плавная прокрутка */
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(40%);
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            font-size: 28px;
+            color: #ff1a1a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 26, 26, 0.7);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            color: #ff1a1a;
+            cursor: pointer;
+            position: relative;
+            z-index: 102;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            overflow-x: hidden;
+            transition: 0.5s;
+            z-index: 101;
+        }
+
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #ff1a1a;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #fff;
+            background: rgba(255, 26, 26, 0.2);
+        }
+
+        #home {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        #home h2 {
+            font-size: 50px;
+            color: #ff1a1a;
+            text-shadow: 0 0 15px rgba(255, 26, 26, 0.8);
+            margin-bottom: 20px;
+            animation: slideUp 1.5s ease-in-out;
+        }
+
+        #home p {
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #ff1a1a, #ff6666);
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
+            animation: pulse 2s infinite;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 26, 26, 0.8);
+        }
+
+        #downloads {
+            padding: 50px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        #downloads h2 {
+            font-size: 36px;
+            color: #ff1a1a;
+            text-shadow: 0 0 10px rgba(255, 26, 26, 0.6);
+            margin-bottom: 40px;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        .cheat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cheat-card {
+            background: linear-gradient(135deg, rgba(255, 26, 26, 0.1), rgba(0, 0, 0, 0.8));
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 26, 26, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: cardSlideUp 1s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        .cheat-card:nth-child(1) { animation-delay: 0.2s; }
+        .cheat-card:nth-child(2) { animation-delay: 0.4s; }
+        .cheat-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .cheat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(255, 26, 26, 0.5);
+        }
+
+        .cheat-card h3 {
+            font-size: 22px;
+            color: #ff1a1a;
+            text-shadow: 0 0 5px rgba(255, 26, 26, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .cheat-card p {
+            font-size: 15px;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .cheat-card i {
+            font-size: 36px;
+            color: #ff1a1a;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            border-top: 2px solid #ff1a1a;
+        }
+
+        .virus-total-note {
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+            color: #ff1a1a;
+            text-shadow: 0 0 5px rgba(255, 26, 26, 0.5);
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #000;
+            max-width: 90%;
+            width: 400px;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes cardSlideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(255, 26, 26, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 26, 26, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(255, 26, 26, 0.5); }
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 22px; }
+            .menu-btn { display: block; }
+            #home h2 { font-size: 32px; }
+            #home p { font-size: 16px; }
+            #downloads h2 { font-size: 28px; }
+            .cheat-card { padding: 15px; }
+            .cheat-card h3 { font-size: 18px; }
+            .cheat-card p { font-size: 14px; }
+            .btn { padding: 10px 20px; font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 10px; }
+            #home h2 { font-size: 24px; }
+            #home p { font-size: 14px; }
+            #downloads { padding: 30px 10px; }
+            .cheat-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/2351090/88a79710d35174c9dae30ae705bcbf404b766949.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+
+    <header>
+        <div class="menu-btn"><i class="fas fa-bars"></i></div>
+        <h1>PVP-CHEATS</h1>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <a href="#home">Главная</a>
+        <a href="#downloads">Скачать читы</a>
+        <a href="#contacts">Контакты</a>
+    </div>
+
+    <section id="home">
+        <h2>Добро пожаловать в PVP-CHEATS</h2>
+        <p>Получите лучшие читы для PvP и станьте непобедимыми!</p>
+        <a href="#downloads" class="btn" id="scrollToDownloads">Скачать читы</a>
+    </section>
+
+    <section id="downloads">
+        <h2>Доступные читы</h2>
+        <div class="cheat-grid">
+            <div class="cheat-card">
+                <i class="fas fa-star"></i>
+                <h3>VenusWare</h3>
+                <p>VenusWare — это один из самых мощных и универсальных читов для Minecraft PvP. Включает в себя KillAura с настраиваемым радиусом действия, AimBot для точного наведения на противников, визуальные модули (ESP, Tracers), а также антиотдачу и автокликер. Подходит как для новичков, так и для опытных игроков, желающих доминировать на любом сервере. Регулярные обновления гарантируют совместимость с последними версиями игры.</p>
+                <a href="https://drive.google.com/uc?export=download&id=1w2CBylXJxgMMpIcQDpJYwZJue98fHqyH" class="btn download-btn">Скачать</a>
+            </div>
+            <div class="cheat-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Wissend</h3>
+                <p>Wissend — это чит с интуитивно понятным интерфейсом и акцентом на комфортную игру. Включает такие функции, как Fly (с обходом античитов), SpeedHack для быстрого перемещения, X-Ray для поиска ресурсов и KillAura с плавной настройкой. Идеально подходит для серверов с умеренной защиты, обеспечивая стабильность и удобство использования даже на слабых ПК.</p>
+                <a href="https://drive.google.com/uc?export=download&id=1lxtc7VO5O0qcB7OHE8-e8KZ3UDyqHef8" class="btn download-btn">Скачать</a>
+            </div>
+            <div class="cheat-card">
+                <i class="fas fa-ghost"></i>
+                <h3>Verist</h3>
+                <p>Verist — обновлённый чит для профессионалов PvP. Оснащён улучшенной KillAura с поддержкой мульти-таргетинга, AimAssist для идеальной точности, а также модулями для обхода античитов (Ghost Mode). Дополнительно включает визуальные улучшения, такие как FullBright и ChestESP. Этот чит регулярно обновляется и оптимизируется для работы на популярных серверах, таких как RW, FT.</p>
+                <a href="https://drive.google.com/uc?export=download&id=1drRUwzfJFaFDX-kfOCY8UYjGzEY4pFVJ" class="btn download-btn">Скачать</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <p>© 2025 PVP-CHEATS. Все права защищены.</p>
+        <p>Связь: <a href="mailto:support@pvpcheats.ru" style="color: #ff1a1a;">support@pvpcheats.ru</a></p>
+    </footer>
+
+    <div class="virus-total-note">
+        <p>Все читы были проверены через сайт Virus Total</p>
+    </div>
+
+    <div class="modal" id="downloadModal">
+        <div class="modal-content">
+            <h3>Внимание!</h3>
+            <p>Использование читов может привести к блокировке на серверах. Скачивайте на свой страх и риск!</p>
+            <a href="#" class="btn" id="confirmDownload">Продолжить</a>
+            <button class="btn" onclick="closeModal()">Отмена</button>
+        </div>
+    </div>
+
+    <script>
+        const downloadButtons = document.querySelectorAll('.download-btn');
+        const modal = document.getElementById('downloadModal');
+        const confirmBtn = document.getElementById('confirmDownload');
+        const menuBtn = document.querySelector('.menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const scrollToDownloads = document.getElementById('scrollToDownloads');
+        let currentLink = '';
+
+        // Плавная прокрутка к секции #downloads
+        scrollToDownloads.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('#downloads').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Логика модального окна для скачивания
+        downloadButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentLink = button.getAttribute('href');
+                modal.style.display = 'flex';
+            });
+        });
+
+        confirmBtn.addEventListener('click', () => {
+            window.open(currentLink, '_blank');
+            closeModal();
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.style.width = sidebar.style.width === '250px' ? '0' : '250px';
+        });
+
+        sidebar.addEventListener('click', () => {
+            sidebar.style.width = '0';
+        });
+    </script>
+</body>
+</html>
